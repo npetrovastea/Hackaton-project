@@ -1,28 +1,102 @@
-const searchForm = document.querySelector('form');
-const searchInput = searchForm.querySelector('input');
-const pillsContainer = document.querySelector('#pills-container');
-const searchResultsContainer = document.querySelector('#search-results');
+const NEWS_API_KEY = '7d9d45519d2846b3872d7449ee2ddcd8';
+const searchForm = document.getElementById('search-form');
+const searchInput = document.getElementById('search-input');
+const searchButton = document.getElementById('search-button');
+const localNewsButton = document.getElementById('local-news-button');
+const resultsContainer = document.getElementById('results-container');
+const newsContainer = document.getElementById('news-container');
 
-// When the search form is submitted, display the search results
-searchForm.addEventListener('submit', (event) => {
-  event.preventDefault();
-  const searchTerm = searchInput.value;
-  displaySearchResults(searchTerm);
-});
+let userLocation = "";
 
-// When a pill is clicked, update the search input with the pill's text and display the search results
-pillsContainer.addEventListener('click', (event) => {
-  if (event.target.classList.contains('pill')) {
-    const searchTerm = event.target.textContent;
-    searchInput.value = searchTerm;
-    displaySearchResults(searchTerm);
+// Event listener for search form submission
+searchForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  if (searchInput.value) {
+    searchNews(searchInput.value);
   }
 });
 
-// Display the search results for the given search term
-function displaySearchResults(searchTerm) {
-  // TODO: Fetch search results from the server using the searchTerm
-  // TODO: Render the search results in the searchResultsContainer
-  // For now, just log the search term to the console
-  console.log(`Searching for: ${searchTerm}`);
+// Event listener for local news button click
+localNewsButton.addEventListener('click', (e) => {
+  e.preventDefault();
+  if (userLocation) {
+    searchNewsByLocation(userLocation);
+  } else {
+    getLocation();
+  }
+});
+
+// Function to get user location
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else {
+    resultsContainer.innerHTML = "<p>Geolocation is not supported by this browser.</p>";
+  }
+}
+
+// Function to show user location
+function showPosition(position) {
+  const latitude = position.coords.latitude;
+  const longitude = position.coords.longitude;
+  userLocation = `${latitude},${longitude}`;
+  searchNewsByLocation(userLocation);
+}
+
+// Function to search for news by keyword
+function searchNews(keyword) {
+  const url = `https://gnews.io/api/v4/search?q=${keyword}&token=${NEWS_API_KEY}`;
+  fetch(url)
+    .then((response) => response.json())
+    .then((data) => {
+      let news = '';
+      if (data.articles) {
+        data.articles.forEach((article) => {
+          const articleDate = new Date(article.publishedAt);
+          news += `
+          <div class="article">
+            <h2 class="title">${article.title}</h2>
+            <p class="description">${article.description}</p>
+            <span class="date">${articleDate.toDateString()}</span>
+            <a class="read-more" href="${article.url}" target="_blank">Read More</a>
+          </div>
+          `;
+        });
+      } else {
+        news = '<p>No news found</p>';
+      }
+      resultsContainer.innerHTML = news;
+    })
+    .catch((error) => {
+      resultsContainer.innerHTML = `<p>${error.message}</p>`;
+    });
+}
+
+// Function to search for news by location
+function searchNewsByLocation(location) {
+  const url = `https://gnews.io/api/v4/search?q=location:${location}&token=${NEWS_API_KEY}`;
+  fetch(url)
+    .then((response) => response.json())
+    .then((data) => {
+      let news = '';
+      if (data.articles) {
+        data.articles.forEach((article) => {
+          const articleDate = new Date(article.publishedAt);
+          news += `
+          <div class="article">
+            <h2 class="title">${article.title}</h2>
+            <p class="description">${article.description}</p>
+            <span class="date">${articleDate.toDateString()}</span>
+            <a class="read-more" href="${article.url}" target="_blank">Read More</a>
+          </div>
+          `;
+        });
+      } else {
+        news = '<p>No news found</p>';
+      }
+      newsContainer.innerHTML = news;
+    })
+    .catch((error) => {
+      newsContainer.innerHTML = `<p>${error.message}</p>`;
+    });
 }
