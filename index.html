@@ -1,22 +1,223 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <title>News Search</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <title>Comic Book Story</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
 </head>
+
 <body>
-  <div class="container">
-    <h1>News Search</h1>
-    <form id="search-form">
-      <input type="text" id="search-input" placeholder="Enter a keyword...">
-      <button type="submit" id="search-button">Search</button>
-      <button id="local-news-button">Local News</button>
-    </form>
-    <div id="results-container"></div>
+  <div id="welcome">
+    <h1>Gears of Destiny: The Ironclad Rescue</h1>
+    <button onclick="startComic()">Start Reading</button>
   </div>
-  <div id="news-container"></div>
-  <script src="script.js"></script>
+
+  <div id="comic">
+    <div id="page1" class="page">
+      <img src="page1.jpg" alt="Page 1">
+      <div class="textbox">
+        <p>(Page 1) In the land of Steamhollow, where gears whir and engines roar, a young tinkerer named Eli lived. He
+          had just completed his apprenticeship with the town's top mechanic, Master Cogsworth. One fateful day, a royal
+          decree was issued: Princess Amelia, beloved of all Steamhollow, was taken captive by a monstrous mechanical
+          dragon and locked away in the high tower of Ironspire.</p>
+      </div>
+      <button onclick="nextPage()">Next Page</button>
+    </div>
+
+    <div id="page2" class="page">
+      <img src="page2.jpg" alt="Page 2">
+      <div class="textbox">
+        <p>(Page 2) Master Cogsworth, too old for such quests, tasked Eli with the rescue mission. He was handed a
+          satchel filled with the finest tools and a few mysterious gadgets. As Eli gazed at the distant tower, he knew
+          his journey was just beginning.</p>
+      </div>
+      <button onclick="nextPage()">Next Page</button>
+    </div>
+
+    <div id="page3" class="page">
+      <img src="page3.jpg" alt="Page 3">
+      <div class="textbox">
+        <p>(Page 3) He ventured through the bustling city, where airships floated above and steam cars zipped by. As he
+          reached the city's outskirts, he stood before two paths: one leading through a dense forest, the other through
+          a vast desert.</p>
+      </div>
+      <button onclick="nextPage()">Тhe forest path</button>
+      <button onclick="goToPage(7)">Тhe desert path</button>
+    </div>
+
+    <div id="page4" class="page">
+      <img src="page4.jpg" alt="Page 4">
+      <div class="textbox">
+        <p>(Page 4) Eli ventured into the forest, each step muffled by the thick undergrowth. Suddenly, he heard a
+          rustling behind him. Before he could react, a group of mechanized bandits surrounded him.</p>
+      </div>
+      <button onclick="nextPage()">Next Page</button>
+    </div>
+
+    <div id="page5" class="page">
+      <img src="page5.jpg" alt="Page 5">
+      <div class="textbox">
+        <p>(Page 5) The bandits demanded his satchel of tools. Thinking quickly, Eli reached for a gadget and pressed a
+          button. It exploded in a cloud of steam, allowing him to escape, albeit without his satchel.</p>
+      </div>
+      <button onclick="nextPage()">Next Page</button>
+    </div>
+
+    <div id="page6" class="page">
+      <img src="page6.jpg" alt="Page 6">
+      <div class="textbox">
+        <p>(Page 6) Bruised but not beaten, Eli managed to reach the other side of the forest. He stood before
+          Ironspire, its silhouette ominous against the setting sun. However, without his tools, how was he to defeat
+          the mechanical dragon?</p>
+      </div>
+      <button onclick="goToPage(10)">confront the dragon without his tools</button>
+      <button onclick="goToPage(13)">go back and retrieve his tools</button>
+    </div>
+
+    <div id="page7" class="page">
+      <img src="page7.jpg" alt="Page 7">
+      <div class="textbox">
+        <p>(Page 7) Eli embarked on the desert path, the sun beating down relentlessly. Just as he was about to lose
+          hope, he came upon an old, abandoned airship half-buried in the sand.</p>
+      </div>
+      <button onclick="nextPage()">Next Page</button>
+    </div>
+
+    <div id="page8" class="page">
+      <img src="page8.jpg" alt="Page 8">
+      <div class="textbox">
+        <p>(Page 8) Using his tools and knowledge, he managed to repair the airship. Soaring through the sky, he reached
+          Ironspire in record time, the tower imposing against the skyline.</p>
+      </div>
+      <button onclick="nextPage()">Next Page</button>
+    </div>
+
+    <div id="page9" class="page">
+      <img src="page9.jpg" alt="Page 9">
+      <div class="textbox">
+        <p>(Page 9) As he landed, the mechanical dragon roared, steam billowing from its nostrils. With his tools at the
+          ready, he wondered if he could trick the dragon.</p>
+      </div>
+      <button onclick="goToPage(10)">fight the dragon head on</button>
+      <button onclick="goToPage(16)">tries to trick the dragon</button>
+    </div>
+
+    <div id="page10" class="page">
+      <img src="page10.jpg" alt="Page 10">
+      <div class="textbox">
+        <p>(Page 10) With a deep breath, Eli charged at the mechanical dragon. He swung a wrench, hit gears, and dodged
+          fiery steam breath. However, the dragon was much stronger.</p>
+      </div>
+      <button onclick="nextPage()">Next Page</button>
+    </div>
+
+    <div id="page11" class="page">
+      <img src="page11.jpg" alt="Page 11">
+      <div class="textbox">
+        <p>(Page 11) Despite his valiant efforts, Eli was overpowered by the dragon. He was thrown across the courtyard,
+          landing hard. As his vision blurred, he saw the mechanical dragon standing victorious.</p>
+      </div>
+      <button onclick="nextPage()">Next Page</button>
+    </div>
+
+    <div id="page12" class="page">
+      <img src="page12.jpg" alt="Page 12">
+      <div class="textbox">
+        <p>(Page 12) Eli woke up in his own bed, his journey only a dream. He looked at his hands, still bearing the
+          scars from the battle. He vowed to train harder, to be ready for the next time. </p>
+        <h1>The End</h1>
+      </div>
+      <button onclick="startComic()">Start Again</button>
+    </div>
+
+    <div id="page13" class="page">
+      <img src="page13.jpg" alt="Page 13">
+      <div class="textbox">
+        <p>(Page 13) Eli braved the forest once more, outsmarted the bandits, and reclaimed his satchel. With renewed
+          vigor, he returned to Ironspire and the mechanical dragon that awaited him. With the satchel slung across his
+          shoulder, he could feel the weight of his tools, but also the weight of the impending battle. He knew the task
+          would not be easy, but he was prepared. He looked up at the dragon, took a deep breath, and stepped forward,
+          ready to face his destiny.</p>
+      </div>
+      <button onclick="nextPage()">Next Page</button>
+    </div>
+
+    <div id="page14" class="page">
+      <img src="page14.jpg" alt="Page 14">
+      <div class="textbox">
+        <p>(Page 14) Standing before the mechanical dragon, Eli felt a surge of confidence. He leapt into the battle,
+          his tools dancing in his hands.</p>
+      </div>
+      <button onclick="nextPage()">Next Page</button>
+    </div>
+
+    <div id="page15" class="page">
+      <img src="page15.jpg" alt="Page 15">
+      <div class="textbox">
+        <p>(Page 15) Using his tools, Eli dismantled the dragon piece by piece. Eventually, the dragon collapsed into a
+          heap of gears and metal plates. With a sigh of relief, he entered the tower and freed Princess Amelia. The
+          kingdom celebrated their return, and Eli was hailed a hero. </p>
+        <h1>The End</h1>
+      </div>
+      <button onclick="startComic()">Start Again</button>
+    </div>
+
+    <div id="page16" class="page">
+      <img src="page16.jpg" alt="Page 16">
+      <div class="textbox">
+        <p>(Page 16) Eli, using his knowledge of machines, crafted a device that mimicked a dragon's roar. As he
+          activated it, the mechanical dragon became distracted, confused.</p>
+      </div>
+      <button onclick="nextPage()">Next Page</button>
+    </div>
+
+    <div id="page17" class="page">
+      <img src="page17.jpg" alt="Page 17">
+      <div class="textbox">
+        <p>(Page 17) Seizing this opportunity, Eli snuck past the dragon and entered the tower. He climbed the winding
+          stairs and found Princess Amelia at the top.</p>
+      </div>
+      <button onclick="nextPage()">Next Page</button>
+    </div>
+
+    <div id="page18" class="page">
+      <img src="page18.jpg" alt="Page 18">
+      <div class="textbox">
+        <p>(Page 18) As he was about to free the princess, he heard a roar. The dragon had recovered from its confusion.
+          It stormed towards the tower, its eyes glowing menacingly..</p>
+      </div>
+      <button onclick="goToPage(19)">hide with the princess</button>
+      <button onclick="goToPage(20)">confront the dragon</button>
+    </div>
+
+    <div id="page19" class="page">
+      <img src="page19.jpg" alt="Page 19">
+      <div class="textbox">
+        <p>(Page 19) Eli quickly hid with Princess Amelia. The dragon stormed in, looked around, and finding no one,
+          retreated. Once the coast was clear, Eli picked the lock and freed the princess. They snuck out and made their
+          way back to Steamhollow. Eli was praised for his cunning and bravery.</p>
+        <h1>The End</h1>
+      </div>
+      <button onclick="startComic()">Start Again</button>
+    </div>
+
+    <div id="page20" class="page">
+      <img src="page20.jpg" alt="Page 20">
+      <div class="textbox">
+        <p>(Page 20) Deciding to confront the dragon, Eli braced himself. However, he realized he had one gadget left in
+          his satchel. It created a whirl of steam and mechanical butterflies, mesmerizing the dragon. But, the device
+          malfunctioned, causing an explosion that tore through the tower. When the dust settled, both Eli and the
+          princess were missing. The kingdom searched for them, but they were never found. Some say they saw two
+          silhouettes flying away on a makeshift airship, heading towards a new adventure. Eli was no longer just a
+          tinkerer but a legend, his tale told for generations. </p>
+        <h1>The End</h1>
+      </div>
+      <button onclick="startComic()">Start Again</button>
+    </div>
+
+  </div>
+
+  <script type="text/javascript" src="script.js"></script>
 </body>
+
 </html>

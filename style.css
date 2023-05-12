@@ -1,57 +1,51 @@
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
+/* Style for Welcome Page */
+#welcome {
+	text-align: center;
+	padding-top: 100px;
 }
 
-h1 {
-  text-align: center;
+/* Hide all pages and the end screen by default */
+.page,
+#end {
+	display: none;
 }
 
-form {
-  display: flex;
-  margin-bottom: 20px;
+/* Show the welcome screen by default */
+#welcome {
+	display: block;
 }
 
-input {
-  flex: 1;
-  padding: 10px;
-  font-size: 16px;
-  border: none;
-  border-radius: 4px 0 0 4px;
+/* Hide all elements except the title and start button on the welcome screen */
+#welcome *:not(h1):not(button) {
+	display: none;
 }
 
+/* Style for Comic Pages */
+.page {
+	text-align: center;
+	margin: 0 auto;
+}
+
+/* Style for End Page */
+#end {
+	text-align: center;
+	padding-top: 100px;
+}
+
+/* Style for Navigation Buttons */
 button {
-  padding: 10px;
-  font-size: 16px;
-  border: none;
-  background-color: #007bff;
-  color: #fff;
-  border-radius: 0 4px 4px 0;
-  cursor: pointer;
+	margin: 20px;
+	padding: 10px 20px;
+	font-size: 20px;
+	background-color: #ccc;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
 }
 
-#results-container {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.article {
-  width: 100%;
-  margin-bottom: 20px;
-  padding: 20px;
-  border: 1px solid #eee;
-  border-radius: 4px;
-}
-
-.article h2 {
-  margin-top: 0;
-}
-
-.article p {
-  margin-bottom: 10px;
-}
-
-.article a {
-  color: #007bff;
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+	.page {
+		max-width: 90%;
+	}
 }
