@@ -1,14 +1,11 @@
-// Global variables to keep track of the current page and total number of pages
 let currentPage = 1;
 const numPages = 20;
 
-// Function to hide all pages and show the welcome screen
 function showWelcome() {
   document.getElementById("welcome").style.display = "block";
   document.getElementById("comic").style.display = "none";
 }
 
-// Function to hide the welcome screen and show the first page
 function startComic() {
   document.getElementById("page" + currentPage).style.display = "none";
   currentPage = 1;
@@ -17,7 +14,6 @@ function startComic() {
   document.getElementById("page1").style.display = "block";
 }
 
-// Function to show the next page
 function nextPage() {
   if (currentPage < numPages) {
     currentPage++;
@@ -36,7 +32,6 @@ function goToPage(page) {
   currentPage = page;
 }
 
-// Function to show the previous page
 function prevPage() {
   if (currentPage > 1) {
     document.getElementById("page" + currentPage).style.display = "none";
@@ -49,9 +44,7 @@ function prevPage() {
 function showEnd() {
   document.getElementById("welcome").style.display = "none";
   document.getElementById("comic").style.display = "none";
-  // Hide page 21 elements
   document.getElementById("page20").style.display = "none";
-  // Hide all pages
   for (let i = 1; i <= numPages - 1; i++) {
     document.getElementById("page" + i).style.display = "none";
   }
@@ -59,26 +52,43 @@ function showEnd() {
 }
 
 
-// Function to show the end screen
 function showEnd() {
-  // Hide page 20 elements
   document.getElementById("page20").style.display = "none";
-  // Hide all pages
   for (let i = 1; i <= numPages - 1; i++) {
     document.getElementById("page" + i).style.display = "none";
   }
-  // Hide the end screen
   document.getElementById("end").style.display = "block";
 }
 
-// Function to hide all pages and show the welcome screen
 function showWelcome() {
-  // Hide all pages
   for (let i = 1; i <= numPages; i++) {
     document.getElementById("page" + i).style.display = "none";
   }
-  // Hide the end screen
   document.getElementById("end").style.display = "none";
-  // Show the welcome screen
   document.getElementById("welcome").style.display = "block";
+}
+
+function checkWord() {
+  // Get the input element and its value
+  const input = document.getElementById('word-input');
+  const word = input.value.toLowerCase();
+
+  // Check the word and show the appropriate image or message
+  const image = document.getElementById('word-image');
+  const message = document.getElementById('message');
+  if (word === 'forest') {
+    image.src = 'forest.jpg';
+    image.alt = 'Forest';
+    message.innerText = '';
+    setTimeout(nextPage(), 5000);
+  } else if (word === 'desert') {
+    image.src = 'desert.jpg';
+    image.alt = 'Desert';
+    message.innerText = '';
+    setTimeout(() => goToPage(7), 5000);
+  } else {
+    image.src = '';
+    image.alt = '';
+    message.innerText = 'Try again!';
+  }
 }

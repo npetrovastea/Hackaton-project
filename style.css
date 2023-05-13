@@ -49,3 +49,23 @@ button {
 		max-width: 90%;
 	}
 }
+
+table {
+	border-collapse: collapse;
+	width: 100%;
+	max-width: 500px;
+	margin: 0 auto;
+}
+td {
+	border: 1px solid black;
+	padding: 10px;
+	text-align: center;
+	font-size: 20px;
+	font-family: Arial, sans-serif;
+	background-color: #f2f2f2;
+}
+
+.textbox {
+	max-width: 1000px;
+	margin: 0 auto; 
+}
