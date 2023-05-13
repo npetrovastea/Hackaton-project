@@ -77,13 +77,14 @@ function checkWord() {
   const image = document.getElementById('word-image');
   const message = document.getElementById('message');
   if (word === 'forest') {
-    image.src = 'forest.jpg';
-    image.alt = 'Forest';
+    // <img id="word-image" src="Assets/Page 3 - choice path.png" alt=""></img>
+    image.src = 'Assets/Page 3 - forest path.png';
+    image.alt = 'forest'
     message.innerText = '';
-    setTimeout(nextPage(), 5000);
+    setTimeout(() => goToPage(4), 5000);
   } else if (word === 'desert') {
-    image.src = 'desert.jpg';
-    image.alt = 'Desert';
+    image.src = 'Assets/Page 3 - desert path.png';
+    image.alt = 'desert';
     message.innerText = '';
     setTimeout(() => goToPage(7), 5000);
   } else {
