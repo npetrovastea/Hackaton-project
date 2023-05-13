@@ -4,8 +4,17 @@
 	padding-top: 100px;
 	background-image: url('Assets/Page\ 0.png');
 	background-repeat: no-repeat;
-	background-size: cover; /* This will ensure the image covers the whole section */
+	background-size: page; /* This will ensure the image covers the whole section */
 	background-position: center; /* This will center the image */
+	opacity: 0.8;
+}
+
+#welcome-text {
+	font-size: 18px;
+	margin-top: 20px;
+	max-width: 1000px;
+	margin: 0 auto;
+	color: rgb(242, 242, 242);
 }
 
 /* Hide all pages and the end screen by default */
@@ -19,10 +28,10 @@
 	display: block;
 }
 
-/* Hide all elements except the title and start button on the welcome screen */
+/* Hide all elements except the title and start button on the welcome screen
 #welcome *:not(h1):not(button) {
 	display: none;
-}
+} */
 
 /* Style for Comic Pages */
 .page {
