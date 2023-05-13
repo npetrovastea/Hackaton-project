@@ -2,6 +2,10 @@
 #welcome {
 	text-align: center;
 	padding-top: 100px;
+	background-image: url('Assets/Page\ 0.png');
+	background-repeat: no-repeat;
+	background-size: cover; /* This will ensure the image covers the whole section */
+	background-position: center; /* This will center the image */
 }
 
 /* Hide all pages and the end screen by default */
